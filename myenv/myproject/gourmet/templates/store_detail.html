@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}店舗詳細{% endblock %}
+
+{% block contents %}
+    <div class="a_detail">
+        <div class="store-h1">
+            <h1>店舗詳細</h1>
+        </div>
+        <!--カルーセル部分-->
+        <div id="carouselExample" class="carousel slide">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                {% if object.photo1 %}
+                    <img src="{{ object.photo1.url}}" class="d-block w-90" alt="...">
+                {% endif %}
+              </div>
+              <div class="carousel-item">
+                {% if object.photo2 %}
+                    <img src="{{ object.photo2.url}}" class="d-block w-90" alt="...">
+                {% endif %}
+              </div>
+              <div class="carousel-item">
+                {% if object.photo3 %}
+                    <img src="{{ object.photo3.url}}" class="d-block w-90" alt="...">
+                {% endif %}
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+              <span class="bi bi-arrow-left-circle-fill" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+              <span class="bi bi-arrow-right-circle-fill" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+          <!--カルーセル終了-->
+          <div class="store-info" style="padding: 10px; margin-bottom: 10px; border: 1px dotted #333333; border-radius: 5px;">
+            <strong>{{ object.store_name }}</strong>
+            <div class="desc">
+                <u><p>店舗説明:</p></u>
+                <p>{{ object.store_detail }}</p>
+            </div>
+        </div>
+        <div class="reserve text-end">
+            <button type="button" class="btn btn-success btn-lg">日付を選択して予約</button>
+        </div>
+
+    </div>
+{% endblock %}
